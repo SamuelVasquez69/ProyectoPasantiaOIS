@@ -1,0 +1,37 @@
+﻿@{ 
+    ViewBag.Title = "Libros";
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<h2>Libreria</h2>
+
+<div class="form-group" style="display:none;">
+    <img src="{{}}" alt="" />
+    <h1 style="padding-bottom: 20px; font-family: cursive; text-align: center;">
+        Detalles del libro
+    </h1>
+    <h4 class="items_libro" id="titulo">Titulo del Libro: {{row.nombre_libro}}</h4>
+    <h4 class="items_libro" id="precio">Precio: {{row.author}}</h4>
+    <h4 class="items_libro" id="descripcion">Descripcion: {{row.year}}</h4>
+    <h4 class="items_libro" id="rating">Rating: {{row.author}}</h4>
+    <h4 class="items_libro" id="contador">Contador: {{row.author}}</h4>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function GetAllLibros() {
+        $.getJSON("/API/GetAllLibros", function (api) {
+            $("#titulo h2").remove();
+            $.map(api, function (api) {
+                $("#titulo h2").append("<h2>"
+                    + "<td>" + api.title + "</h2>"
+                );
+            });
+        });
+    }
+</script>
